@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "thread-and-cloth",
+	"version": "${version}",
+	"name": "Thread & Cloth",
+	"description": "Mod for creating clothes.",
+	"authors": [
+		"Febre"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/thread-and-cloth/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.febre.threadandcloth.ThreadAndCloth"
+		],
+		"fabric-datagen": [
+			"com.febre.threadandcloth.ThreadAndClothDataGenerator"
+		],
+		"client": [
+			"com.febre.threadandcloth.ThreadAndClothClient"
+		]
+	},
+	"mixins": [
+		"thread-and-cloth.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
