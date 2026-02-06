@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "thread-and-cloth:block/cloth_block"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "item.thread-and-cloth.cotton": "Cotton",
+  "item.thread-and-cloth.thread": "Thread",
+  "item.thread-and-cloth.cloth": "Cloth",
+
+  "block.thread-and-cloth.cloth_block": "Cloth Block",
+
+  "itemgroup.threadandcloth.tc_ingredients": "TC Ingredients",
+  "itemgroup.threadandcloth.tc_blocks": "TC Blocks"
+}
