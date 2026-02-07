@@ -4,6 +4,7 @@ import com.febre.threadandcloth.block.ModBlocks;
 import com.febre.threadandcloth.component.ModDataComponentTypes;
 import com.febre.threadandcloth.item.ModItemGroups;
 import com.febre.threadandcloth.item.ModItems;
+import com.febre.threadandcloth.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -21,5 +22,6 @@ public class ThreadAndCloth implements ModInitializer {
 		ModBlocks.registerModBLocks();
 
 		ModDataComponentTypes.registerDataComponentTypes();
+		ModWorldGeneration.generateModWorldGen();
 	}
 }

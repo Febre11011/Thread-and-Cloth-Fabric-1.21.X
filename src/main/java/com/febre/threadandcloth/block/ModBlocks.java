@@ -1,8 +1,10 @@
 package com.febre.threadandcloth.block;
 
 import com.febre.threadandcloth.ThreadAndCloth;
+import com.febre.threadandcloth.block.custom.CottonBush;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -16,6 +18,14 @@ public class ModBlocks {
             .sounds(BlockSoundGroup.WOOL)
             .hardness(0.8f)
     ));
+    public static final Block COTTON_BUSH = registerBlockWithoutBlockItem("cotton_bush",
+            new CottonBush(
+                AbstractBlock.Settings.create()
+                        .noCollision()
+                        .breakInstantly()
+                        .ticksRandomly()
+                        .sounds(BlockSoundGroup.GRASS)
+            ));
 
     private static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, Identifier.of(ThreadAndCloth.MOD_ID, name), block);

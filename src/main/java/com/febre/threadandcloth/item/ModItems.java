@@ -1,6 +1,8 @@
 package com.febre.threadandcloth.item;
 
 import com.febre.threadandcloth.ThreadAndCloth;
+import com.febre.threadandcloth.block.ModBlocks;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -8,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    public static final Item COTTON = registerItem("cotton", new Item(new Item.Settings()));
+    public static final Item COTTON = registerItem("cotton", new AliasedBlockItem(ModBlocks.COTTON_BUSH, new Item.Settings()));
     public static final Item THREAD = registerItem("thread", new Item(new Item.Settings()));
     public static final Item CLOTH = registerItem("cloth", new Item(new Item.Settings()));
 
