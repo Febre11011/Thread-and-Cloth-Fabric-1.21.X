@@ -1,6 +1,7 @@
 package com.febre.threadandcloth;
 
 import com.febre.threadandcloth.block.ModBlocks;
+import com.febre.threadandcloth.component.ModDataComponentTypes;
 import com.febre.threadandcloth.item.ModItemGroups;
 import com.febre.threadandcloth.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -15,7 +16,10 @@ public class ThreadAndCloth implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
+
 		ModItems.registerModItems();
 		ModBlocks.registerModBLocks();
+
+		ModDataComponentTypes.registerDataComponentTypes();
 	}
 }

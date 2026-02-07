@@ -14,7 +14,12 @@ public class ModBlocks {
 
     public static final Block CLOTH_BLOCK = registerBlock("cloth_block", new Block(AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.WOOL)
+            .hardness(0.8f)
     ));
+
+    private static Block registerBlockWithoutBlockItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, Identifier.of(ThreadAndCloth.MOD_ID, name), block);
+    }
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
