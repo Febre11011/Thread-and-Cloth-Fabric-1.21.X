@@ -29,9 +29,5 @@ public class ModBlocks {
 
     public static void registerModBLocks() {
         ThreadAndCloth.LOGGER.info("Registering Mod Blocks for " + ThreadAndCloth.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.add(CLOTH_BLOCK);
-        });
     }
 }

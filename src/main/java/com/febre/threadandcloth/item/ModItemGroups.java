@@ -13,17 +13,17 @@ import net.minecraft.util.Identifier;
 public class ModItemGroups {
     public static final ItemGroup TC_INGREDIENTS_GROUP = Registry.register(Registries.ITEM_GROUP, Identifier.of(ThreadAndCloth.MOD_ID, "tc_ingredients"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.THREAD))
-                    .displayName(Text.translatable("itemgroup.threadandcloth.tc_ingredients"))
+                    .displayName(Text.translatable("itemgroup.thread-and-cloth.tc_ingredients"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.THREAD);
-                        entries.add(ModItems.CLOTH);
+                        entries.add(ModItems.COTTON);
                         entries.add(ModItems.CLOTH);
                     })
             .build());
 
     public static final ItemGroup TC_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP, Identifier.of(ThreadAndCloth.MOD_ID, "tc_blocks"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.CLOTH_BLOCK))
-                    .displayName(Text.translatable("itemgroup.threadandcloth.tc_blocks"))
+                    .displayName(Text.translatable("itemgroup.thread-and-cloth.tc_blocks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.CLOTH_BLOCK);
                     })

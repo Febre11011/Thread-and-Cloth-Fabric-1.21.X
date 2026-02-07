@@ -5,6 +5,6 @@
 
   "block.thread-and-cloth.cloth_block": "Cloth Block",
 
-  "itemgroup.threadandcloth.tc_ingredients": "TC Ingredients",
-  "itemgroup.threadandcloth.tc_blocks": "TC Blocks"
+  "itemgroup.thread-and-cloth.tc_ingredients": "TC Ingredients",
+  "itemgroup.thread-and-cloth.tc_blocks": "TC Blocks"
 }

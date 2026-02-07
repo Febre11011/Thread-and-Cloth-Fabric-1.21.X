@@ -20,12 +20,6 @@ public class ModItems {
 
     public static void registerModItems() {
         ThreadAndCloth.LOGGER.info("Registering Mod Items for " + ThreadAndCloth.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.add(COTTON);
-            entries.add(THREAD);
-            entries.add(CLOTH);
-        });
     }
 
 }
