@@ -3,8 +3,11 @@
   "item.thread-and-cloth.thread": "Thread",
   "item.thread-and-cloth.cloth": "Cloth",
 
+  "item.thread-and-cloth.thigh_highs": "Thigh Highs",
+
   "block.thread-and-cloth.cloth_block": "Cloth Block",
 
   "itemgroup.thread-and-cloth.tc_ingredients": "TC Ingredients",
-  "itemgroup.thread-and-cloth.tc_blocks": "TC Blocks"
+  "itemgroup.thread-and-cloth.tc_blocks": "TC Blocks",
+  "itemgroup.thread-and-cloth.tc_clothes": "TC Clothes"
 }

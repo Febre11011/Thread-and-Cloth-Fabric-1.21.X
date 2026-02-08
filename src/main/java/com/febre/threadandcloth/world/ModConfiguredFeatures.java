@@ -1,18 +1,29 @@
 package com.febre.threadandcloth.world;
 
 import com.febre.threadandcloth.ThreadAndCloth;
+import com.febre.threadandcloth.block.ModBlocks;
+import com.febre.threadandcloth.block.custom.CottonBush;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+
+import java.util.List;
 
 public class ModConfiguredFeatures {
 
-    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTON_BUSH_KEY = registerKey("cotton_bush");
 
+    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+        register(context, COTTON_BUSH_KEY, Feature.RANDOM_PATCH,
+                ConfiguredFeatures.createRandomPatchFeatureConfig(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.COTTON_BUSH.getDefaultState().with(CottonBush.AGE, 4))),
+                        List.of(Blocks.GRASS_BLOCK)));
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {

@@ -4,6 +4,7 @@ import com.febre.threadandcloth.item.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -17,13 +18,21 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 
-public class CottonBush extends PlantBlock implements Fertilizable {
+public class CottonBush extends TallPlantBlock implements Fertilizable {
     public static final IntProperty AGE = IntProperty.of("age", 0, 4);
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
+    private static final VoxelShape SMALL_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 7.0, 11.0);
+    private static final VoxelShape MEDIUM_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
+    private static final VoxelShape LARGE_SHAPE_LOWER = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+    private static final VoxelShape LARGE_SHAPE_UPPER = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
 
     public CottonBush(Settings settings) {
         super(settings);
@@ -33,7 +42,7 @@ public class CottonBush extends PlantBlock implements Fertilizable {
     }
 
     @Override
-    protected MapCodec<? extends PlantBlock> getCodec() {
+    public MapCodec<? extends TallPlantBlock> getCodec() {
         return createCodec(CottonBush::new);
     }
 
@@ -44,6 +53,30 @@ public class CottonBush extends PlantBlock implements Fertilizable {
 
     private boolean isTall(int age) {
         return age >= 2;
+    }
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        int age = state.get(AGE);
+        DoubleBlockHalf half = state.get(HALF);
+
+        // 1. Handle the UPPER block first
+        if (half == DoubleBlockHalf.UPPER) {
+            // If age is 2, 3, or 4, it uses the upper part of the model.
+            // Based on your shapes, let's assume it only has an upper hitbox at these stages.
+            if (age >= 2) {
+                return LARGE_SHAPE_UPPER;
+            }
+            // If it's the upper half but the age is too low, it should have NO hitbox
+            return VoxelShapes.empty();
+        }
+
+        // 2. Handle the LOWER block
+        return switch (age) {
+            case 0 -> SMALL_SHAPE;
+            case 1 -> MEDIUM_SHAPE;
+            default -> LARGE_SHAPE_LOWER; // Age 2, 3, and 4
+        };
     }
 
     @Override
@@ -107,7 +140,6 @@ public class CottonBush extends PlantBlock implements Fertilizable {
         BlockPos lowerPos = state.get(HALF) == DoubleBlockHalf.LOWER ? pos : pos.down();
         BlockState lowerState = world.getBlockState(lowerPos);
 
-        // Pokud spodní blok není naše kytka, nelze hnojit
         if (!lowerState.isOf(this)) return false;
         return state.get(AGE) < 4;
     }
@@ -119,21 +151,17 @@ public class CottonBush extends PlantBlock implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        int nextAge = Math.min(4, state.get(AGE) + 1); // Předpokládám MAX_AGE = 3
+        int nextAge = Math.min(4, state.get(AGE) + 1);
         DoubleBlockHalf half = state.get(HALF);
 
-        // 1. Najdeme pozici druhé poloviny
         BlockPos otherHalfPos = (half == DoubleBlockHalf.LOWER) ? pos.up() : pos.down();
         BlockState otherHalfState = world.getBlockState(otherHalfPos);
 
-        // 2. Aplikujeme růst na aktuální blok
         world.setBlockState(pos, state.with(AGE, nextAge), Block.NOTIFY_LISTENERS);
 
-        // 3. Aplikujeme růst na druhou polovinu (pokud existuje a je to stejný typ keře)
         if (otherHalfState.isOf(this)) {
             world.setBlockState(otherHalfPos, otherHalfState.with(AGE, nextAge), Block.NOTIFY_LISTENERS);
         }
-        // Speciální případ: Pokud keř právě vyrostl do výšky (přechod z 1 bloku na 2)
         else if (half == DoubleBlockHalf.LOWER && nextAge == 2 && world.isAir(otherHalfPos)) {
             world.setBlockState(otherHalfPos, this.getDefaultState()
                     .with(HALF, DoubleBlockHalf.UPPER)

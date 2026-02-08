@@ -1,0 +1,34 @@
+package com.febre.threadandcloth.block;
+
+import com.febre.threadandcloth.ThreadAndCloth;
+import com.febre.threadandcloth.item.ModItems;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
+
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
+
+public class ModArmorMaterials {
+
+    public static final RegistryEntry<ArmorMaterial> THIGH_HIGHS_ARMOR_MATERIAL = registerArmorMaterial("thigh_highs",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.LEGGINGS, 1);
+            }), 20, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, () -> Ingredient.ofItems(ModItems.CLOTH),
+                    List.of(new ArmorMaterial.Layer(
+                            Identifier.of(ThreadAndCloth.MOD_ID, "thigh_highs"), "", true),
+                            new ArmorMaterial.Layer(
+                            Identifier.of(ThreadAndCloth.MOD_ID, "thigh_highs"), "_overlay", false)
+                            ), 0,0));
+
+    public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
+        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(ThreadAndCloth.MOD_ID, name), material.get());
+    }
+}

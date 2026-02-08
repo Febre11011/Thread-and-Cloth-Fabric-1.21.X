@@ -29,6 +29,14 @@ public class ModItemGroups {
                     })
                     .build());
 
+    public static final ItemGroup TC_CLOTHES = Registry.register(Registries.ITEM_GROUP, Identifier.of(ThreadAndCloth.MOD_ID, "tc_clothes"),
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.THIGH_HIGHS))
+                    .displayName(Text.translatable("itemgroup.thread-and-cloth.tc_clothes"))
+                    .entries((displayContext, entries) -> {
+                        entries.add(ModItems.THIGH_HIGHS);
+                    })
+                    .build());
+
     public static void registerItemGroups() {
         ThreadAndCloth.LOGGER.info("Registering Mod Item Groups for " + ThreadAndCloth.MOD_ID);
     }
