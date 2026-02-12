@@ -4,7 +4,6 @@ import com.febre.threadandcloth.ThreadAndCloth;
 import com.febre.threadandcloth.block.ModBlocks;
 import com.febre.threadandcloth.block.custom.CottonBush;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;

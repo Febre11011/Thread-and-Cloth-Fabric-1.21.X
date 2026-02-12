@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"com.febre.threadandcloth.ThreadAndClothClient"
+		],
+		"rei_client": [
+			"com.febre.threadandcloth.compat.ThreadAndClothREIClient"
 		]
 	},
 	"mixins": [
