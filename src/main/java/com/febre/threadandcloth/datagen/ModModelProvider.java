@@ -55,6 +55,7 @@ public class ModModelProvider extends FabricModelProvider {
             json.add("textures", textures);
             return json;
         });
+
     }
 
 
