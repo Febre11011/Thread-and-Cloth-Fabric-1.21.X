@@ -42,5 +42,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('C', ModItems.CLOTH)
                 .criterion(hasItem(ModItems.CLOTH), conditionsFromItem(ModItems.CLOTH))
                 .offerTo(recipeExporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItems.THIGH_HIGHS)
+                .pattern("C C")
+                .pattern("C C")
+                .pattern("C C")
+                .input('C', ModItems.CLOTH)
+                .criterion(hasItem(ModItems.CLOTH), conditionsFromItem(ModItems.CLOTH))
+                .offerTo(recipeExporter);
     }
 }

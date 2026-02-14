@@ -1,7 +1,6 @@
-package com.febre.threadandcloth.block;
+package com.febre.threadandcloth.item;
 
 import com.febre.threadandcloth.ThreadAndCloth;
-import com.febre.threadandcloth.item.ModItems;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -31,4 +30,6 @@ public class ModArmorMaterials {
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
         return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(ThreadAndCloth.MOD_ID, name), material.get());
     }
+
+
 }

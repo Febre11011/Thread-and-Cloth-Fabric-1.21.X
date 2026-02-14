@@ -1,7 +1,6 @@
 package com.febre.threadandcloth.item;
 
 import com.febre.threadandcloth.ThreadAndCloth;
-import com.febre.threadandcloth.block.ModArmorMaterials;
 import com.febre.threadandcloth.block.ModBlocks;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ArmorItem;
@@ -16,7 +15,7 @@ public class ModItems {
     public static final Item THREAD = registerItem("thread", new Item(new Item.Settings()));
     public static final Item CLOTH = registerItem("cloth", new Item(new Item.Settings()));
 
-    public static final Item THIGH_HIGHS = registerItem("thigh_highs", new ArmorItem(ModArmorMaterials.THIGH_HIGHS_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()));
+    public static final Item THIGH_HIGHS = registerItem("thigh_highs", new ArmorItem(ModArmorMaterials.THIGH_HIGHS_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(ThreadAndCloth.MOD_ID, name), item);

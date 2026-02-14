@@ -1,6 +1,7 @@
 package com.febre.threadandcloth.datagen;
 
 import com.febre.threadandcloth.item.ModItems;
+import com.febre.threadandcloth.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
