@@ -3,12 +3,12 @@
 	"id": "thread-and-cloth",
 	"version": "${version}",
 	"name": "Thread & Cloth",
-	"description": "Mod for creating clothes.",
+	"description": "In this mod, you will be able to decorate and craft dyeable thigh-highs. It adds a brand new items such as cotton, thread, cloth and also a cotton bush.",
 	"authors": [
 		"Febre11011"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://github.com/Febre11011/Thread-and-Cloth-Fabric-1.21.X",
 		"sources": "https://github.com/Febre11011/Thread-and-Cloth-Fabric-1.21.X"
 	},
 	"license": "GNU-GPL-v3",
