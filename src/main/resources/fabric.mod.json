@@ -5,13 +5,13 @@
 	"name": "Thread & Cloth",
 	"description": "Mod for creating clothes.",
 	"authors": [
-		"Febre"
+		"Febre11011"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/Febre11011/Thread-and-Cloth-Fabric-1.21.X"
 	},
-	"license": "EULA",
+	"license": "GNU-GPL-v3",
 	"icon": "assets/thread-and-cloth/icon.png",
 	"environment": "*",
 	"entrypoints": {
